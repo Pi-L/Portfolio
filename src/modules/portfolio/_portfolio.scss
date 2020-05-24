@@ -1,0 +1,148 @@
+@use '../common/sass/variables' as var;
+@use '../common/sass/mixins' as cmx;
+
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 1rem;
+  align-items: start;
+  justify-items: center;
+
+  grid-auto-flow: dense;
+
+  // todo : redo images with same height and width
+  // todo : change touitteur without monkeys
+
+  @media screen and (max-width: 110em * var.$mediaRatio) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 75em * var.$mediaRatio) {
+    grid-template-columns: 1fr;
+  }
+
+  .card img {
+    border-radius: 0.15rem 0.15rem 0 0;
+    /* transform: scale(1);
+    transition: transform 0.3s; */
+  }
+
+  .card {
+    /*  &:hover img,
+    &:focus img {
+      transform: scale(1.05);
+    } */
+
+    figure {
+      position: relative;
+      overflow: hidden;
+    }
+
+    figcaption {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      padding: 1.5rem;
+
+      opacity: 0;
+      // color: var(--primaryBg);
+      color: var(--highlightTxt);
+      background-color: var(--primaryHighlightFilter);
+      transition: opacity 0.3s;
+      z-index: 0;
+
+      $distFromSide: 0.9rem;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        border: 0.2rem solid var(--highlightTxt);
+        background-color: transparent;
+        z-index: -1;
+      }
+      &::before {
+        top: $distFromSide;
+        bottom: $distFromSide;
+        left: 50%;
+        right: 50%;
+        border-width: 0.2rem 0;
+
+        transition: left 0.6s, right 0.6s;
+      }
+      &::after {
+        top: 50%;
+        bottom: 50%;
+        left: $distFromSide;
+        right: $distFromSide;
+        border-width: 0 0.2rem;
+        transition: top 0.6s, bottom 0.6s;
+      }
+
+      $finalDistFromSides: 0.5rem;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+
+        &::before {
+          left: $finalDistFromSides;
+          right: $finalDistFromSides;
+        }
+        &::after {
+          top: $finalDistFromSides;
+          bottom: $finalDistFromSides;
+        }
+      }
+
+      h3 {
+        flex: 0 0 auto;
+        text-align: center;
+        padding: 1rem 0.5rem 0.5rem;
+        width: 100%;
+        font-size: 3rem;
+      }
+      p {
+        flex: 1 1 0%;
+        text-align: center;
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1.8rem;
+      }
+
+      ul {
+        flex: 0.2 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        li:first-of-type {
+          margin-right: 1rem;
+        }
+
+        a {
+          display: flex;
+          align-items: baseline;
+          justify-content: center;
+          &::before {
+            margin-right: 0.3rem;
+          }
+        }
+      }
+    }
+
+    a:focus figcaption {
+      background-color: var(--primaryHighlight);
+      color: var(--highlightTxt);
+    }
+
+    &:focus figcaption {
+      opacity: 1;
+    }
+  }
+}

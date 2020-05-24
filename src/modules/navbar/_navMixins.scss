@@ -1,0 +1,134 @@
+@mixin burger($base-value: 5, $bgColor: #fff, $bgFocus: #900, $radius: 1) {
+  // core from https://codepen.io/designcouch/pen/Atyop
+  // require 6 span tags inside the button
+  display: block;
+  margin: 2px;
+  padding: 0;
+  font-size: 3.7px * $base-value;
+  width: 12px * $base-value;
+  height: 10.5px * $base-value;
+  position: relative;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  outline: none;
+
+  transform: translate3d(0, 0, 0);
+
+  &.openBurger,
+  &:hover,
+  &:active,
+  &:focus {
+    user-select: none;
+    text-decoration: none;
+    outline-style: none;
+  }
+
+  &:active > span,
+  &.openBurger > span {
+    background: $bgColor;
+  }
+
+  > span {
+    display: inline-block;
+    position: absolute;
+    // height: 0.56em;
+    height: 0.37em;
+    background: $bgColor;
+    opacity: 1;
+    pointer-events: none;
+    transform: translate3d(0, 0, 0);
+    // trying to correct aliasing caused by border transition
+    // transform: translateZ(-.001rem) rotate(0.01deg);
+    // --- moving away from borders - styling nightmare
+  }
+
+  $border-focus: 0;
+
+  &:focus > span,
+  &:hover > span {
+    background: $bgFocus;
+
+    &:nth-of-type(n + 3):nth-of-type(-n + 4) {
+      background: $bgColor;
+    }
+  }
+
+  &.openBurger:focus > span,
+  &.openBurger:hover > span {
+    background: $bgFocus;
+  }
+
+  > span {
+    width: 50%;
+    transition: all 0.25s ease-in-out;
+  }
+
+  > span:nth-of-type(even) {
+    left: 50%;
+    border-radius: 0 (0.17em * $radius) (0.17em * $radius) 0;
+  }
+
+  > span:nth-of-type(odd) {
+    left: 1px;
+    border-radius: (0.17em * $radius) 0 0 (0.17em * $radius);
+  }
+
+  > span:nth-of-type(1),
+  > span:nth-of-type(2) {
+    top: 0;
+  }
+
+  > span:nth-of-type(3),
+  > span:nth-of-type(4) {
+    top: 1.12em;
+  }
+
+  > span:nth-of-type(5),
+  > span:nth-of-type(6) {
+    top: 2.25em;
+  }
+
+  &.openBurger > span:nth-of-type(1),
+  &.openBurger > span:nth-of-type(6) {
+    transform: rotate(45deg);
+  }
+
+  &.openBurger > span:nth-of-type(2),
+  &.openBurger > span:nth-of-type(5) {
+    transform: rotate(-45deg);
+  }
+
+  &.openBurger > span:nth-of-type(1) {
+    left: 0.4em;
+    top: 0.6em;
+  }
+
+  &.openBurger > span:nth-of-type(2) {
+    left: calc(50% - 0.1em);
+    top: 0.6em;
+  }
+
+  &.openBurger > span:nth-of-type(3) {
+    left: -50%;
+    opacity: 0;
+  }
+
+  &.openBurger > span:nth-of-type(4) {
+    left: 100%;
+    opacity: 0;
+  }
+
+  &.openBurger > span:nth-of-type(5) {
+    left: 0.4em;
+    top: 1.72em;
+  }
+
+  &.openBurger > span:nth-of-type(6) {
+    left: calc(50% - 0.1em);
+    top: 1.72em;
+  }
+}

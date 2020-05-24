@@ -1,0 +1,25 @@
+// vendors
+@use 'vendors/vendor';
+
+// reset
+@use 'modules/common/sass/reset';
+
+// utility classes
+@use 'modules/common/sass/fonts';
+@use 'modules/common/sass/utilities';
+
+// modules
+@use 'modules/navbar/navbar';
+@use 'modules/hero/hero';
+@use 'modules/about/about';
+@use 'modules/skills/skills';
+@use 'modules/portfolio/portfolio';
+@use 'modules/expEdu/experiences';
+@use 'modules/contact/contact';
+@use 'modules/footer/footer';
+@use 'modules/rgpd/rgpd';
+
+@use 'modules/hero/starParallax';
+
+// a11y
+@use 'modules/common/sass/a11y';

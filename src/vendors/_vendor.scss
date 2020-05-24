@@ -1,0 +1,32 @@
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+@mixin myFA($type: far, $name: question-circle) {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before {
+    @extend .fa-#{$name};
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+
+    @if $type == fas {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+    } @else if $type == far {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 400;
+    } @else if $type == fab {
+      font-family: 'Font Awesome 5 Brands';
+      font-weight: normal;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+$mediaRatio: 10 / 16;
+
+body {
+  --navbarHeight: 6rem;
+}
+
+/* @media screen and (max-width: (80em * $mediaRatio)) {
+  body {
+    --navbarHeight: 6rem;
+  }
+} */

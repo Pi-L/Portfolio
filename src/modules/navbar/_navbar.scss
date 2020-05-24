@@ -1,0 +1,275 @@
+@use '../common/sass/palette';
+@use '../common/sass/variables' as var;
+@use '../common/sass/fonts';
+@use '../common/sass/utilities';
+@use '../common/sass/mixins' as cmx;
+@use 'navMixins' as nmx;
+
+nav.navbar {
+  position: sticky;
+  top: 0;
+  height: var(--navbarHeight);
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  $navBarThreshHold: 100em;
+
+  @media screen and (max-width: ($navBarThreshHold  * var.$mediaRatio)) {
+    justify-content: flex-start;
+  }
+
+  background-color: var(--secondaryBg);
+  z-index: 10000;
+
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1;
+
+  > .burgerButton {
+    display: none;
+    @extend %noOutlines;
+
+    @media screen and (max-width: ($navBarThreshHold  * var.$mediaRatio)) {
+      @include nmx.burger(3, var(--primaryTxt), var(--primaryHighlight), 1);
+      margin-left: 1.5rem;
+      & + ul {
+        max-width: 0;
+        padding: 0;
+        left: -100vw;
+        transition: max-width 0.01s 0.4s, padding 0.01s 0.4s, left 0.4s;
+      }
+      & + ul.shown {
+        max-width: 100vw;
+        padding: 2rem;
+        left: 0;
+        transition: max-width 0.4s, padding 0.4s, left 0.001s;
+      }
+    }
+  }
+
+  .closingBg {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+  }
+  .closingBg.shown {
+    display: block;
+  }
+
+  ul {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: ($navBarThreshHold  * var.$mediaRatio)) {
+      position: fixed;
+      top: var(--navbarHeight);
+      width: 100vw;
+      height: calc(100vh - var(--navbarHeight));
+
+      border-radius: 0 0 180% 0;
+
+      background-color: var(--primaryTxt);
+      color: var(--primaryBg);
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+
+      li {
+        padding: 1rem 0;
+        width: min-content;
+        font-size: 3rem;
+      }
+    }
+  }
+
+  li {
+    margin-right: 2.1rem;
+  }
+
+  a {
+    @include cmx.hover-underline-animation-shrink(
+      var(--primaryHighlight),
+      -30%,
+      0.2rem,
+      70%,
+      isInView
+    );
+  }
+
+  // Thanks to //codepen.io/camstephensdomo/pen/xVgPoo
+  $height: 3rem;
+  .themeSwitch.toggle-container {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: $height * 2;
+    height: $height;
+    background: #3c4145;
+    border-radius: $height/2;
+    border: ($height * 0.07143) solid #1c1c1c;
+    &:hover,
+    &:focus {
+      border-color: var(--primaryHighlight);
+    }
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.5s ease 0s, background 0.5s ease 0s;
+
+    /*   &::before {
+      content: 'Thème';
+      position: relative;
+      font-size: 0.9em;
+      top: 50%;
+      left: -120%;
+      transform: translateY(-50%);
+    } */
+
+    @extend %noOutlines;
+
+    .toggle-handle {
+      position: absolute;
+      height: $height * 0.7857;
+      width: $height * 0.7857;
+      left: $height * 0.042857;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      border-radius: 50%;
+      background: #ffffff;
+      border: ($height * 0.07143) solid #e4e9c8;
+      box-shadow: 0px 0px 20px rgba(228, 233, 200, 0.5);
+      z-index: 999;
+      transition: left 0.5s ease 0s, background 0.5s ease 0s, border-color 0.5s ease 0s,
+        transform 0.5s ease 0s;
+      .crater {
+        position: absolute;
+        border: ($height * 0.07143) solid #e4e9c8;
+        border-radius: 50%;
+      }
+      .crater-one {
+        top: 10%;
+        left: 3%;
+        height: 40%;
+        width: 40%;
+      }
+      .crater-two {
+        right: 6%;
+        top: 6%;
+      }
+      .crater-three {
+        right: 24%;
+        bottom: 10%;
+        height: 30%;
+        width: 30%;
+      }
+    }
+    .mini-cloud {
+      height: 40%;
+      width: auto;
+      position: absolute;
+      left: 20%;
+      top: 38%;
+      opacity: 0;
+      z-index: 999;
+      transition: opacity 0.25s ease 0s, left 0.5s ease 0s;
+    }
+    .star {
+      position: absolute;
+      background: #ffffff;
+      opacity: 1;
+      border-radius: 50%;
+      transform: scale(1);
+      transition: transform 0.5s ease;
+    }
+    .star-small {
+      $smallStar: 4%;
+      height: $smallStar;
+      width: $smallStar/2;
+    }
+    .star-medium {
+      $mediumStar: 6%;
+      height: $mediumStar;
+      width: $mediumStar/2;
+    }
+    .star-large {
+      $largeStar: 8%;
+      height: $largeStar;
+      width: $largeStar/2;
+    }
+    .star-one {
+      top: 12%;
+      left: 45%;
+      transition-delay: 0.4s;
+    }
+    .star-two {
+      top: 72%;
+      left: 50%;
+      transition-delay: 0.35s;
+    }
+    .star-three {
+      top: 30%;
+      left: 62%;
+      transition-delay: 0.3s;
+    }
+    .star-four {
+      top: 56%;
+      left: 68%;
+      transition-delay: 0.25s;
+    }
+    .star-five {
+      top: 8%;
+      left: 76%;
+      transition-delay: 0.2s;
+    }
+    .star-six {
+      top: 40%;
+      left: 86%;
+      transition-delay: 0.15s;
+    }
+    .star-seven {
+      top: 70%;
+      left: 82%;
+      transition-delay: 0.1s;
+    }
+  }
+
+  .themeSwitch.toggle-container-day {
+    background: #9fe4fc;
+    border-color: #86c4d8;
+
+    .toggle-handle-day {
+      left: ($height * 2) * 0.516;
+      background: #ffe06e;
+      border-color: #e2c448;
+      transform: rotate(90deg);
+
+      .crater-day {
+        width: 0%;
+        height: 0%;
+        border: 0px solid transparent;
+        transition: height 0.5s ease 0s, width 0.5s ease 0s, border 0.5s ease 0s;
+      }
+    }
+
+    .star-day {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    .cloud-day {
+      opacity: 1;
+      left: 40%;
+    }
+  }
+}

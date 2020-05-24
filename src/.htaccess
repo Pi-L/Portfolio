@@ -1,0 +1,22 @@
+# Disable directory browsing
+Options All -Indexes
+
+# Deny access to all .htaccess files
+<files ~ "^.*\.([Hh][Tt][Aa])">
+order allow,deny
+deny from all
+satisfy all
+</files>
+
+# Prevent image hotlinking script. Replace last URL with any image link you want.
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?legeay.info [NC]
+RewriteRule \.(jpg|jpeg|png|gif|svg)$ https://picsum.photos/200/300/?random [NC,R,L]
+
+# BEGIN Expire headers  
+<FilesMatch "\.(jpg|jpeg|png|svg|gif|js|css|ttf|woff|woff2|eot)$">
+Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>
+# END Expire headers 
+

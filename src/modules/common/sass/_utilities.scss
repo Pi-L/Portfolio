@@ -1,0 +1,310 @@
+@use '../../../vendors/vendor' as vd;
+@use 'palette';
+@use 'variables' as var;
+@use 'fonts';
+@use 'mixins' as cmx;
+
+// vendor
+
+.grecaptcha-badge {
+  z-index: -10000;
+  opacity: 0;
+  right: -200rem;
+}
+
+// Virtual classes
+// -------------------------------------------
+%noOutlines {
+  &:focus {
+    outline: none;
+  }
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+// Elements
+// -------------------------------------------
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--primaryBg);
+  color: var(--primaryTxt);
+  font-family: 'Lato';
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.6rem;
+}
+
+body.transition {
+  transition: background-color 0.3s, color 0.3s;
+  section,
+  header,
+  footer,
+  aside,
+  .container,
+  article,
+  form {
+    transition: background-color 0.3s, color 0.3s;
+  }
+}
+
+section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 50vh;
+  padding-top: var(--navbarHeight);
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-bottom: var(--navbarHeight);
+
+  @media screen and (max-width: 80em * var.$mediaRatio) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 1.5rem;
+  }
+  @media screen and (max-width: 50em * var.$mediaRatio) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+section:nth-of-type(2n) {
+  background-color: var(--secondaryBg);
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 4rem;
+  font-style: normal;
+  text-align: center;
+  padding: 1rem 0 3rem;
+
+  @media screen and (max-width: 50em * var.$mediaRatio) {
+    font-size: 2.7rem;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &::-moz-focus-inner {
+    border: 0;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+// Classes
+// -------------------------------------------
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.bodyNoScroll {
+  overflow: hidden;
+}
+
+.card {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  box-shadow: var(--shadowBox);
+}
+
+.button {
+  display: block;
+  padding: 0.6rem 1.3rem;
+  background-color: transparent;
+  // color: var(--primaryBg);
+  color: var(--highlightTxt);
+  border-width: 0.2rem;
+  border-style: solid;
+  /* border-color: var(--primaryBg); */
+  border-color: var(--highlightTxt);
+  border-radius: 1.5rem;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1;
+  transition: all 0.3s;
+
+  &:hover,
+  &:focus,
+  &.focused {
+    color: var(--primaryTxt);
+    background-color: var(--secondaryBg);
+  }
+}
+
+.backToTop {
+  opacity: 0;
+  z-index: -10;
+  transition: opacity 0.3s;
+}
+
+.backToTop.shown {
+  @include vd.myFA(fas, angle-up);
+  $height: 4.5rem;
+
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  opacity: 0.9;
+  z-index: 10;
+
+  height: $height;
+  width: $height;
+  padding-bottom: 0.1 * $height;
+  border-radius: 50%;
+
+  color: var(--highlightTxt);
+  background-color: var(--primaryHighlight);
+  box-shadow: 0.2rem 0.2rem 1rem var(--shadowColor);
+  overflow: hidden;
+
+  &::before {
+    line-height: 1;
+    font-size: $height * 0.9;
+  }
+  @keyframes arrowUpAnim {
+    0% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(0.3rem);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    75% {
+      transform: translateY(-0.2rem);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+    &::before {
+      animation-name: arrowUpAnim;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: 3;
+    }
+  }
+}
+
+// vendors
+.location {
+  @include vd.myFA(fas, map-marker-alt);
+}
+
+.email {
+  @include vd.myFA(fas, envelope-open-text);
+}
+
+.send {
+  @include vd.myFA(fas, share);
+}
+
+.linkedIn {
+  @include vd.myFA(fab, linkedin);
+}
+.gitHub {
+  @include vd.myFA(fab, github-square);
+}
+.codePen {
+  @include vd.myFA(fab, codepen);
+}
+.stackOverflow {
+  @include vd.myFA(fab, stack-overflow);
+}
+.rootMe {
+  @include vd.myFA(fas, unlock-alt);
+}
+
+.html5 {
+  @include vd.myFA(fab, html5);
+}
+
+.css3 {
+  @include vd.myFA(fab, css3-alt);
+}
+
+.sass {
+  @include vd.myFA(fab, sass);
+}
+
+.bootstrap {
+  @include vd.myFA(fab, bootstrap);
+}
+
+.js {
+  @include vd.myFA(fab, js-square);
+}
+
+.code {
+  @include vd.myFA(fas, code);
+}
+
+.apple {
+  @include vd.myFA(fab, apple);
+}
+
+.ubuntu {
+  @include vd.myFA(fab, ubuntu);
+}
+
+.ubuntu {
+  @include vd.myFA(fab, ubuntu);
+}
+
+.windows {
+  @include vd.myFA(fab, windows);
+}
+
+.fcc {
+  @include vd.myFA(fab, free-code-camp);
+}
+
+.gitkraken {
+  @include vd.myFA(fab, gitkraken);
+}
+
+.git {
+  @include vd.myFA(fab, git-alt);
+}
+
+.react {
+  @include vd.myFA(fab, react);
+}
+
+.python {
+  @include vd.myFA(fab, python);
+}
+
+.wordpress {
+  @include vd.myFA(fab, wordpress);
+}
+
+.laravel {
+  @include vd.myFA(fab, laravel);
+}
+
+.database {
+  @include vd.myFA(fas, database);
+}
+
+.php {
+  @include vd.myFA(fab, php);
+}
+
+.gulp {
+  @include vd.myFA(fab, gulp);
+}

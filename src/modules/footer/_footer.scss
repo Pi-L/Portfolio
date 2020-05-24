@@ -1,0 +1,42 @@
+@use '../common/sass/variables' as var;
+@use '../common/sass/utilities';
+@use '../common/sass/mixins' as cmx;
+
+.footer {
+  background-color: var(--primaryTxt);
+  color: var(--primaryBg);
+  width: 100%;
+}
+
+.footer .container {
+  padding: 2rem 0;
+  ul {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  li {
+    margin-right: 3rem;
+    padding: 1rem;
+    font-size: 2rem;
+  }
+
+  a {
+    @include cmx.hover-underline-animation-shrink(
+      var(--primaryHighlight),
+      -30%,
+      0.2rem,
+      70%,
+      isInView
+    );
+  }
+
+  @media screen and (max-width: (60em  * var.$mediaRatio)) {
+    li {
+      margin-right: 0rem;
+      padding: 1rem 0.5rem;
+      font-size: 1.6rem;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="Description"
+      content="Pierre-Yves Legeay, développeur web et web mobile. Page de présentation et portfolio des projets réalisés."
+    />
+    <title>Pierre-Yves Legeay - Développeur Web et Web Mobile</title>
+  </head>
+  <body id="top" class="">
+    <a class="skipToContent" href="#hero" aria-label="Aller directement au contenu"
+      >Aller directement au contenu</a
+    >
+    <!-- todo : add image width and height -->
+    <!-- navbar -->
+    ${require('./modules/navbar/navbar.html')}
+    <!-- hero -->
+    ${require('./modules/hero/hero.html')}
+    <!-- about -->
+    ${require('./modules/about/about.html')}
+    <!-- skills -->
+    ${require('./modules/skills/skills.html')}
+    <!-- portfolio -->
+    ${require('./modules/portfolio/portfolio.html')}
+    <!-- experiences -->
+    ${require('./modules/expEdu/experiences.html')}
+    <!-- contact -->
+    ${require('./modules/contact/contact.html')}
+
+    <footer class="footer">
+      <div class="container">
+        <ul>
+          <li>
+            <a href="https://www.linkedin.com/in/pyl/" rel="noreferrer" target="_blank">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://github.com/Pi-L" rel="noreferrer" target="_blank">GitHub</a>
+          </li>
+          <li><a href="#rgpd">Mentions légales</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <a class="backToTop" href="#top" aria-label="Back to the top"></a>
+    ${require('./modules/rgpd/rgpd.html')}
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdgsMsUAAAAAHaNOwBSrxxIh1myBRnjX5iyAl96"></script>
+  </body>
+</html>

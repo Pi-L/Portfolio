@@ -1,0 +1,137 @@
+// from https://codepen.io/scottloway/pen/zqoLyQ
+
+// html :
+// <div class="circle-loader">
+//   <div class="checkmark draw"></div>
+// </div>
+
+// Define vars we'll be using
+// $brand-success: #5cb85c;
+// $loader-size: 7em;
+// $check-height: $loader-size/2;
+// $check-width: $check-height/2;
+// $check-left: ($loader-size/6 + $loader-size/12);
+// $check-thickness: 3px;
+// $check-color: $brand-success;
+
+@mixin circleLoader(
+  $bordercolor: rgba(0, 0, 0, 0.2),
+  $borderWidth: 0.1rem,
+  $brand-success: #5cb85c,
+  $loader-size: 8em,
+  $check-thickness: 0.5rem
+) {
+  $check-height: $loader-size/2;
+  $check-width: $check-height/2;
+  $check-left: ($loader-size/6 + $loader-size/12);
+  $check-color: $brand-success;
+
+  .circle-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    //margin-bottom: $loader-size/2;
+    border: $borderWidth solid $bordercolor;
+    border-left-color: $check-color;
+    animation: loader-spin 1.2s infinite linear;
+
+    border-radius: 50%;
+    width: $loader-size;
+    height: $loader-size;
+    &::before,
+    &::after {
+      content: '';
+      transform: translateX(-50%) rotate(0);
+      transition: transform 0.5s;
+    }
+
+    &.alert {
+      border-color: red;
+      border-width: $borderWidth * 2;
+      &::before,
+      &::after {
+        position: absolute;
+        top: 10%;
+        bottom: 10%;
+        left: 50%;
+        width: $check-thickness;
+        background-color: red;
+      }
+      &::before {
+        transform: translateX(-50%) rotate(45deg);
+      }
+      &::after {
+        transform: translateX(-50%) rotate(-45deg);
+      }
+    }
+  }
+
+  .load-complete {
+    -webkit-animation: none;
+    animation: none;
+    border-color: $check-color;
+    transition: border 500ms ease-out;
+  }
+
+  .checkmark {
+    display: none;
+
+    &.shown {
+      display: block;
+    }
+
+    &.draw:after {
+      animation-duration: 800ms;
+      animation-timing-function: ease;
+      animation-name: checkmark;
+      transform: scaleX(-1) rotate(135deg);
+    }
+
+    &:after {
+      opacity: 1;
+      height: $check-height;
+      width: $check-width;
+      transform-origin: left top;
+      border-right: $check-thickness solid $check-color;
+      border-top: $check-thickness solid $check-color;
+      content: '';
+      left: $check-left;
+      top: $check-height;
+      position: absolute;
+    }
+  }
+
+  @keyframes loader-spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  @keyframes checkmark {
+    0% {
+      height: 0;
+      width: 0;
+      opacity: 1;
+    }
+    20% {
+      height: 0;
+      width: $check-width;
+      opacity: 1;
+    }
+    40% {
+      height: $check-height;
+      width: $check-width;
+      opacity: 1;
+    }
+    100% {
+      height: $check-height;
+      width: $check-width;
+      opacity: 1;
+    }
+  }
+}

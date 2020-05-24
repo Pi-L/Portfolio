@@ -1,0 +1,31 @@
+body {
+  --primaryBg: #ffffff;
+  --secondaryBg: #f9f6f7;
+  --primaryHighlight: rgb(255, 151, 29);
+
+  --secondaryHighlight: rgb(1, 86, 104);
+  --highlightTxt: #f9f6f7;
+  --primaryTxt: #464646;
+  --secondaryTxt: var(--secondaryBg);
+
+  --shadowColor: rgba(0, 0, 0, 0.15);
+  --shadowBox: 0 0.1rem 2rem 0.4rem var(--shadowColor);
+
+  --primaryFilter: rgba(255, 255, 255, 0.8);
+  --secondaryFilter: rgba(0, 0, 0, 0.2);
+  --primaryHighlightFilter: rgba(30, 30, 36, 0.9);
+  --primaryHighlightFilter: rgba(1, 86, 104, 0.9);
+}
+
+body.dark {
+  --primaryBg: #100e17;
+  --secondaryBg: #1e1e24;
+  --primaryHighlight: #e79602;
+  --primaryTxt: #e7e7e8;
+  // --secondaryTxt: #fff1cf;
+  --shadowColor: #000;
+  --shadowBox: -1rem 0 3rem var(--shadowColor);
+  --primaryFilter: rgba(0, 0, 0, 0.8);
+  --secondaryFilter: rgba(255, 255, 255, 0.2);
+  //--primaryHighlightFilter: rgba(249, 246, 247, 0.9);
+}

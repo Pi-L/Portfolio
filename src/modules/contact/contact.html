@@ -1,0 +1,64 @@
+<section class="contact" id="contact">
+  <div class="container">
+    <h2>
+      Contact
+      <span class="error"></span>
+    </h2>
+    <form class="contactForm" action="messageMe" method="POST">
+      <div class="cf__name__container cf__container">
+        <input
+          type="text"
+          id="cf__name"
+          name="cf__name"
+          placeholder=" "
+          minlength="3"
+          maxlength="70"
+          required
+        />
+        <label for="cf__name">Votre nom</label>
+      </div>
+      <div class="cf__email__container cf__container">
+        <input
+          type="email"
+          name="cf__email"
+          id="cf__email"
+          minlength="6"
+          maxlength="70"
+          placeholder=" "
+          required
+        />
+        <label for="cf__email">Votre eMail</label>
+      </div>
+      <div class="cf__message__container cf__container">
+        <textarea
+          name="cf__message"
+          id="cf__message"
+          minlength="5"
+          maxlength="1000"
+          rows="5"
+          cols="1"
+          placeholder=" "
+          required
+        ></textarea>
+        <label for="cf__message">Votre message</label>
+      </div>
+      <button id="cf__submit" type="submit">Envoyer <span class="send"></span></button>
+      <p class="disclamer">
+        Ce site est protégé par reCAPTCHA,
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer"
+          >les règles de confidentialité</a
+        >
+        et
+        <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer"
+          >les conditions d’utilisation</a
+        >
+        de Google s'appliquent.
+      </p>
+      <div class="infoValidation">
+        <div class="circle-loader">
+          <div class="checkmark draw"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

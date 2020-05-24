@@ -1,0 +1,183 @@
+@use '../common/sass/variables' as var;
+@use '../common/sass/utilities';
+@use '../common/sass/mixins' as cmx;
+@use './checkValidation' as cv;
+
+.contact {
+  background-image: url('./modules/contact/mapColorOverlay.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  h2 {
+    position: relative;
+
+    .error {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 100%;
+      font-size: 0.5em;
+      color: #f22;
+      padding: 0 2rem;
+      background-color: #fff;
+      font-weight: 300;
+      font-style: italic;
+      border-radius: 1rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+}
+
+.contact .contactForm {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+
+  background-color: var(--primaryBg);
+  color: var(--primaryTxt);
+  padding: 2.5rem;
+  border-radius: 2rem;
+  margin: 0 auto;
+  box-shadow: var(--shadowBox);
+  max-width: 80rem;
+
+  textarea {
+    resize: none;
+  }
+
+  input,
+  textarea {
+    background-color: var(--primaryBg);
+    color: var(--primaryTxt);
+    border: none;
+
+    &:invalid,
+    &:-moz-ui-invalid,
+    &:required {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  input,
+  textarea,
+  button {
+    @extend %noOutlines;
+    padding: 1.5rem 1rem 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+  }
+
+  .cf__container {
+    position: relative;
+    margin-bottom: 3rem;
+    border: 0.4rem solid var(--primaryTxt);
+    border-radius: 1rem;
+  }
+
+  label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    padding: 0 0.5rem;
+    border-radius: 0.2rem;
+    width: max-content;
+    line-height: 1;
+    background-color: var(--primaryBg);
+    color: var(--primaryTxt);
+    transition: all 0.3s;
+  }
+
+  label.alert {
+    color: #f35;
+    font-style: italic;
+  }
+
+  input:focus,
+  input:not(:placeholder-shown),
+  textarea:focus,
+  textarea:not(:placeholder-shown) {
+    + label {
+      top: -0.2rem;
+      transform: translateY(-50%);
+      color: var(--primaryHighlight);
+    }
+
+    + label.alert {
+      color: #f35;
+      font-style: italic;
+      font-size: 700;
+      font-size: 1.01em;
+    }
+  }
+
+  /* .g-recaptcha {
+    width: min-content;
+    max-width: 100%;
+    background-color: var(--primaryTxt);
+    > * {
+      margin-left: 0.2rem;
+      margin-top: 0.2rem;
+    }
+    overflow: hidden;
+  } */
+
+  #cf__submit {
+    display: block;
+    background-color: var(--primaryHighlight);
+    color: var(--highlightTxt);
+    font-size: 1.3em;
+    line-height: 1;
+    height: 6rem;
+    border: 0.35rem solid transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: var(--primaryTxt);
+      font-weight: 700;
+      font-size: 1.45em;
+    }
+
+    &:active {
+      $depth: 0.15rem;
+      box-shadow: inset $depth $depth $depth var(--shadowColor),
+        inset -1 * $depth -1 * $depth $depth var(--shadowColor);
+    }
+
+    > span {
+      display: inline;
+    }
+  }
+
+  .disclamer {
+    padding-top: 0.5rem;
+    font-size: 0.8em;
+    a {
+      @include cmx.hover-underline-animation-ltr(var(--primaryHighlight));
+      display: inline-block;
+    }
+  }
+
+  .infoValidation {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 2rem;
+    background-color: var(--primaryFilter);
+
+    &.shown {
+      display: block;
+    }
+
+    @include cv.circleLoader(var(--secondaryFilter), 0.2rem, #5cb85c, 15rem, 1rem);
+  }
+}

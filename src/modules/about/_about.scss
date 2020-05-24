@@ -1,0 +1,51 @@
+@use '../common/sass/variables' as var;
+@use '../common/sass/mixins' as cmx;
+
+.about > .container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: 1fr;
+  gap: 15rem;
+  align-items: start;
+  justify-items: center;
+
+  @media screen and (max-width: 120em * var.$mediaRatio) {
+    gap: 10rem;
+  }
+  @media screen and (max-width: 100em * var.$mediaRatio) {
+    gap: 5rem;
+  }
+
+  .textPresentation {
+    padding: 3.5rem 0 0;
+    font-size: 2rem;
+
+    p {
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+
+    p:last-of-type::first-letter {
+      margin-left: 5rem;
+    }
+
+    span {
+      font-size: 3em;
+      line-height: 1;
+      float: left;
+      padding-right: 0.5rem;
+    }
+
+    a {
+      position: relative;
+      @include cmx.hover-underline-animation-ltr(var(--primaryHighlight));
+      display: inline;
+    }
+  }
+
+  @media screen and (max-width: 80em * var.$mediaRatio) {
+    gap: 3rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+  }
+}

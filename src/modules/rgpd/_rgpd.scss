@@ -1,0 +1,108 @@
+.mentionsLegales {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  overflow: auto;
+
+  color: #000;
+  background-color: #fff;
+
+  z-index: -100;
+
+  &.shown,
+  &:target {
+    z-index: 999999;
+    display: block;
+  }
+
+  .container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 80%;
+    padding: 2rem 0;
+  }
+
+  .closeButton {
+    position: sticky;
+    display: block;
+    float: right;
+    top: 1rem;
+    right: 1rem;
+    border: solid #000 0.5rem;
+    border-radius: 50%;
+    width: 5vw;
+    height: 5vw;
+    min-height: 3rem;
+    min-width: 3rem;
+    max-width: 6rem;
+    max-height: 6rem;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 10%;
+      bottom: 10%;
+      left: 50%;
+      width: 0.5rem;
+      background-color: #000;
+    }
+    &::before {
+      transform: translateX(-50%) rotate(45deg);
+    }
+    &::after {
+      transform: translateX(-50%) rotate(-45deg);
+    }
+  }
+  h2,
+  h3,
+  h4,
+  h5 {
+    padding: 0.5rem 0;
+  }
+  h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    padding-bottom: 2rem;
+  }
+  h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  h4,
+  h5 {
+    font-size: 2rem;
+  }
+
+  p,
+  li {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p.googServices {
+    font-size: 1.7rem;
+    font-weight: 400;
+    font-style: italic;
+    padding: 0.5rem 0.5rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 2.5rem;
+  }
+
+  h3,
+  h4 {
+    + p::first-letter {
+      margin-left: 5rem;
+    }
+  }
+}

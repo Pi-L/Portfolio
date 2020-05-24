@@ -1,0 +1,94 @@
+@use '../common/sass/variables' as var;
+@use '../common/sass/fonts';
+
+.skills > .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto 1fr auto;
+  gap: 2rem;
+
+  @media screen and (max-width: 90em * var.$mediaRatio) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto repeat(2, 1fr) auto;
+  }
+
+  @media screen and (max-width: 60em * var.$mediaRatio) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto repeat(3, 1fr) auto;
+  }
+
+  > h2 {
+    grid-column: 1 / -1;
+  }
+
+  article {
+    background-color: var(--secondaryBg);
+    padding: 2rem 3rem;
+
+    h3 {
+      text-align: center;
+    }
+
+    li {
+      justify-content: flex-start;
+      &::before {
+        font-size: 1.1em;
+        width: 3rem;
+      }
+    }
+
+    .webpack {
+      div {
+        display: inline-block;
+        width: 3rem;
+      }
+      svg {
+        height: 1em;
+        margin-bottom: -0.2em;
+        fill: currentColor;
+      }
+    }
+
+    .gulp::before {
+      transform: translateX(12%);
+    }
+
+    .osses {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+
+      span {
+        margin-right: 1.5rem;
+        font-size: 1.2em;
+      }
+    }
+  }
+
+  @media screen and (max-width: 90em * var.$mediaRatio) and (min-width: 60em * var.$mediaRatio) {
+    article:last-of-type {
+      grid-row: 3;
+      grid-column: 1/-1;
+    }
+  }
+  /* 
+  @media screen and (max-width: 50em * var.$mediaRatio) {
+    .workFlow {
+      grid-row: 4;
+      grid-column: span 2;
+    }
+  } */
+
+  .legend {
+    grid-column: 1 / -1;
+    grid-row: -1;
+    p {
+      display: inline-block;
+    }
+    p:first-child {
+      width: 2rem;
+    }
+  }
+}
