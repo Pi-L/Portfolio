@@ -5,7 +5,7 @@
 
 **Date : 12/2019**
 
-## Technos
+## Tools
 - Vanilla JavaScript with [Intersection Observer API][1], [localStorage][2], and [Fetch API][3].
 - Sass ([Dart Sass][4])
 - [Webpack 4][5]
