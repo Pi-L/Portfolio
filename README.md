@@ -1,1 +1,25 @@
-Portfolio
+# My Portfolio
+
+## Description
+*This portfolio is a personal project I worked on when I started learning web development at [CEFIM][8]*
+
+**Date : 12/2019**
+
+## Technos
+- Vanilla JavaScript with [Intersection Observer API][1], [localStorage][2], and [Fetch API][3].
+- Sass ([Dart Sass][4])
+- [Webpack 4][5]
+- PHP - A tiny bit for the contact form called with AJAX
+- Google's [reCAPTCHA v3][6]
+
+## App
+- [legeay.info][7]
+
+[1]: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+[2]: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+[3]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+[4]: https://sass-lang.com/dart-sass
+[5]: https://webpack.js.org/
+[6]: https://developers.google.com/recaptcha/docs/v3
+[7]: https://legeay.info
+[8]: https://www.cefim.eu
