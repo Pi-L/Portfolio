@@ -11,6 +11,7 @@
 - [Webpack 4][5]
 - PHP - A tiny bit for the contact form called with AJAX
 - Google's [reCAPTCHA v3][6]
+- [Font Awesome][9] (with sass)
 
 ## App
 - [legeay.info][7]
@@ -23,3 +24,4 @@
 [6]: https://developers.google.com/recaptcha/docs/v3
 [7]: https://legeay.info
 [8]: https://www.cefim.eu
+[9]: https://fontawesome.com/how-to-use/on-the-web/using-with/sass
