@@ -1,7 +1,7 @@
 # My Portfolio
 
 ## Description
-*This portfolio is a personal project I worked on when I started learning web development at [CEFIM][8]*
+*This portfolio is a personal project I worked on when I started learning web development
 
 **Date : 12/2019**
 
@@ -23,5 +23,4 @@
 [5]: https://webpack.js.org/
 [6]: https://developers.google.com/recaptcha/docs/v3
 [7]: https://legeay.info
-[8]: https://www.cefim.eu
 [9]: https://fontawesome.com/how-to-use/on-the-web/using-with/sass
