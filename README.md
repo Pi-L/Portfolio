@@ -2,7 +2,7 @@
 
 ## Description
 
-\*This portfolio is a personal project I worked on while learning web development
+This portfolio is a personal project I worked on while learning web development
 
 **Date : 12/2019**
 
